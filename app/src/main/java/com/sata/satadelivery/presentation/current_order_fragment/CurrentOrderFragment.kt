@@ -46,7 +46,7 @@ class CurrentOrderFragment @Inject constructor(var viewModel:CurrentOrderViewMod
 
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
         view = DataBindingUtil.inflate(inflater,
             R.layout.current_order_fragment, container, false)
 

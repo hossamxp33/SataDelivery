@@ -13,18 +13,16 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
-    compileSdk 30
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.sata.satadelivery"
         minSdk 23
-        targetSdk 30
-        versionCode 4
-        versionName "4"
+        targetSdk 32
+        versionCode 5
+        versionName "5"
         testInstrumentationRunner "com.example.satadelivery.CustomTestRunner"
         vectorDrawables.useSupportLibrary = true
-
-
     }
     configurations {
         cleanedAnnotations
