@@ -40,8 +40,10 @@ class CurrentOrderViewModel @Inject constructor(private val DateRepoCompnay: Dat
 
     protected val getStatusState : MutableStateFlow<DeliveryItem>? = null
 
-    val deliveryState: MutableStateFlow<DeliveryItem>? get() = getStatusState
 
+    val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
+        throwable.printStackTrace()
+    }
     init {
          getIntent()
         mclientLatitude = MutableLiveData()
@@ -67,9 +69,9 @@ class CurrentOrderViewModel @Inject constructor(private val DateRepoCompnay: Dat
 
     }
     fun changeOrderStatus(Id:Int,data: OrderStatus) {
-        job = CoroutineScope(Dispatchers.IO).launch {
+        job = CoroutineScope(Dispatchers.IO+coroutineExceptionHandler).launch {
             val response = DateRepoCompnay.changeOrderStatus(Id,data)
-            withContext(Dispatchers.Main) {
+            withContext(Dispatchers.Main+coroutineExceptionHandler) {
                 (response.collect {
                     runCatching {
                         OrderStateLD?.value = it.getOrNull()!!
@@ -85,9 +87,9 @@ class CurrentOrderViewModel @Inject constructor(private val DateRepoCompnay: Dat
     }
 
     fun deliversOrdersCanceled(data:OrdersItem) {
-        job = CoroutineScope(Dispatchers.IO).launch {
+        job = CoroutineScope(Dispatchers.IO+coroutineExceptionHandler).launch {
             val response = DateRepoCompnay.deliversOrdersCanceled(data)
-            withContext(Dispatchers.Main) {
+            withContext(Dispatchers.Main+coroutineExceptionHandler) {
                 (response.collect {
                     runCatching {
                         OrderState?.value = it.getOrNull()!!
@@ -103,9 +105,9 @@ class CurrentOrderViewModel @Inject constructor(private val DateRepoCompnay: Dat
     }
 //changeDeliveryStatus
 fun changeDeliversStatus(Id:Int,statusId:Int) {
-    job = CoroutineScope(Dispatchers.IO).launch {
+    job = CoroutineScope(Dispatchers.IO+coroutineExceptionHandler).launch {
         val response = DateRepoCompnay.changeDeliveryStatus(Id, statusId)
-        withContext(Dispatchers.Main) {
+        withContext(Dispatchers.Main+coroutineExceptionHandler) {
             (response.collect {
                 runCatching {
                     OrderState?.value = it.getOrNull()!!
@@ -120,9 +122,9 @@ fun changeDeliversStatus(Id:Int,statusId:Int) {
 }
 
     fun getDeliversStatus(Id:Int) {
-        job = CoroutineScope(Dispatchers.IO).launch {
+        job = CoroutineScope(Dispatchers.IO+coroutineExceptionHandler).launch {
             val response = Datasources.getDeliversStatus(Id)
-            withContext(Dispatchers.Main) {
+            withContext(Dispatchers.Main+coroutineExceptionHandler) {
                 if (response.isSuccessful) {
                     deliveryItemLD?.postValue(response.body())
 

@@ -24,7 +24,6 @@ suspend fun mapIntentToViewState(
 
 }
 
-
 private suspend fun proceedWithInitialize(
     loadCart: suspend () -> Flow<Result<ArrayList<OrdersItem>>>,
     intent: MainIntent,

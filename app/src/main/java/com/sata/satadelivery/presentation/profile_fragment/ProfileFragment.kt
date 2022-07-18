@@ -81,11 +81,16 @@ class ProfileFragment @Inject constructor() : Fragment() {
         }
 
         viewModel.getDeliversStatus(pref.delivery_status)
-
-        viewModel.deliveryItemLD!!.observe(requireActivity()) {
-            view.data = it[0]
-
+        try {
+            viewModel.deliveryItemLD!!.observe(requireActivity()) {
+                if (!it.isNullOrEmpty())
+                    view.data = it[0]
+                else
+                    Error_MotionToast("لا يوجد بيانات ", requireActivity())
+            }
+        } catch (e: Exception) {
         }
+
         view.editBtn.setOnClickListener {
             editRequest()
             SUCCESS_MotionToast("تم التعديل", requireActivity())

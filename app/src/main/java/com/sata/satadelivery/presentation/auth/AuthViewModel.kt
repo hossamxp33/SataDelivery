@@ -25,7 +25,9 @@ class AuthViewModel @Inject constructor(private val Datasources: RemoteDataSourc
     val errorMessage = MutableLiveData<String>()
     val loading = MutableLiveData<Boolean>()
 
-
+    val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
+        throwable.printStackTrace()
+    }
     init {
         authLD = MutableLiveData()
     }
@@ -34,9 +36,9 @@ class AuthViewModel @Inject constructor(private val Datasources: RemoteDataSourc
 
     //authentication
     fun login(loginModel: User?) {
-        job = CoroutineScope(Dispatchers.IO).launch {
+        job = CoroutineScope(Dispatchers.IO+coroutineExceptionHandler).launch {
             val response = Datasources.getLoginResponse(loginModel!!)
-            withContext(Dispatchers.Main) {
+            withContext(Dispatchers.Main+coroutineExceptionHandler) {
                 if (response.isSuccessful) {
                     authLD?.postValue(response.body())
 

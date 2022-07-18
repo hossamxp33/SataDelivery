@@ -6,6 +6,7 @@ import com.sata.satadelivery.models.current_orders.DateModel
 import com.sata.satadelivery.models.current_orders.OrderStatus
 import com.sata.satadelivery.models.current_orders.OrdersItem
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import okhttp3.MultipartBody
@@ -16,7 +17,11 @@ class DataRepo @Inject constructor(
     private val Datasources: DataSource,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 )  {
-
+  
+    val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
+        throwable.printStackTrace()
+    }
+    val io = ioDispatcher+coroutineExceptionHandler
         val getOrders: Flow<Result<ArrayList<OrdersItem>>> =
         flow {
             emit(Datasources.getCurrentOrders())
@@ -27,7 +32,7 @@ class DataRepo @Inject constructor(
             }}}
             .catch {
                     throwable ->  emit(Result.failure(throwable)) }
-            .flowOn(ioDispatcher)
+            .flowOn(io)
 
 
         fun getDeliveryOrdersByDate(dateModel: DateModel?): Flow<Result<ArrayList<OrdersItem>>> =
@@ -40,7 +45,7 @@ class DataRepo @Inject constructor(
             }}}
             .catch {
                     throwable ->  emit(Result.failure(throwable)) }
-            .flowOn(ioDispatcher)
+            .flowOn(io)
 
 
 
@@ -61,7 +66,7 @@ class DataRepo @Inject constructor(
 
                     throwable ->  emit(Result.failure(throwable)) }
 
-            .flowOn(ioDispatcher)
+            .flowOn(io)
 
 
 
@@ -80,7 +85,7 @@ class DataRepo @Inject constructor(
 
                     throwable ->  emit(Result.failure(throwable)) }
 
-            .flowOn(ioDispatcher)
+            .flowOn(io)
 
 //deliversOrdersCanceled
 suspend  fun deliversOrdersCanceled(data:OrdersItem): Flow<Result<OrdersItem>> =
@@ -97,7 +102,7 @@ suspend  fun deliversOrdersCanceled(data:OrdersItem): Flow<Result<OrdersItem>> =
 
                 throwable ->  emit(Result.failure(throwable)) }
 
-        .flowOn(ioDispatcher)
+        .flowOn(io)
     //editDeliveryData
     suspend  fun editDeliveryData( file: MultipartBody.Part?, name : String?, phone:String? ,id: Int?,): Flow<Result<Driver>> =
         flow {
@@ -112,7 +117,7 @@ suspend  fun deliversOrdersCanceled(data:OrdersItem): Flow<Result<OrdersItem>> =
             .catch {
 
                     throwable ->  emit(Result.failure(throwable)) }
-            .flowOn(ioDispatcher)
+            .flowOn(io)
 
 
 
