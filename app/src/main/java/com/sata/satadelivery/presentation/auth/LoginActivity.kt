@@ -65,17 +65,16 @@ class LoginActivity : AppCompatActivity() {
 //             .replace(R.id.login_frame, BranchOrdersFragment()).addToBackStack(null).commit()
 
         viewModel.authLD?.observe(this, Observer {
-
+     if (it!=null){
             if (it.token == null) {
                 Toast.makeText(this, "خطأ في كلمة المرور او كلمة السر", Toast.LENGTH_SHORT).show()
                 progress.isVisible = false
 
             } else {
-
+                try{
                 pref.UserToken = it.token
-                pref.deliveryId = it.user.id!!
+                pref.deliveryId = it.user.driver!!.id!!
                 pref.delivery_status = it.user.driver!!.is_online
-
                 pref.restaurantName = it.user.name
                 pref.userName = it.user.driver!!.name
                 pref.userPhone = it.user.driver!!.mobile
@@ -83,7 +82,9 @@ class LoginActivity : AppCompatActivity() {
                 pref.room_id = it.user.room_id
                 pref.restaurantLat = it.user.driver!!.branches.latitude.toString()
                 pref.restaurantLong = it.user.driver!!.branches.longitude.toString()
+                }catch (e:Exception){
 
+                }
 
                 progress.isVisible = false
 
@@ -93,7 +94,11 @@ class LoginActivity : AppCompatActivity() {
 
             }
 
-        })
+        }else
+         Toast.makeText(this, "خطأ في كلمة المرور او كلمة السر", Toast.LENGTH_SHORT).show()
+
+        }
+        )
 
 
         viewModel.errorMessage.observe(this, Observer {

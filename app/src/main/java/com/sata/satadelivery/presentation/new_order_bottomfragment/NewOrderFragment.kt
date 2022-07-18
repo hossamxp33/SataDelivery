@@ -77,7 +77,6 @@ class NewOrderFragment @Inject constructor(
 
         view.confirmButton.setOnClickListener {
             changeStatusRequest()
-
             //connecting socket
             val confirmData = JSONObject()
             confirmData.put("roomID", pref.room_id)
