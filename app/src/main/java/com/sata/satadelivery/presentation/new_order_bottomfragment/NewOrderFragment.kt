@@ -123,7 +123,7 @@ class NewOrderFragment @Inject constructor(
     }
 
 
-    override  fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    override   fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
 
         if (savedInstanceState == null) {

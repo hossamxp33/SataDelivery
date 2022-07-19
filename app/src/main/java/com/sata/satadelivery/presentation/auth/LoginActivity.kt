@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
         mSocket = app.getMSocket()
         mSocket?.connect()
 
-        login.setOnClickListener {
+        btn_login.setOnClickListener {
             isAllFieldsChecked = Validation().checkAllFields(binding,this);
             if (isAllFieldsChecked) {
                 loginRequest()
@@ -85,9 +85,7 @@ class LoginActivity : AppCompatActivity() {
                 }catch (e:Exception){
 
                 }
-
                 progress.isVisible = false
-
                 val mainIntent = Intent(this, MapActivity::class.java)
                 startActivity(mainIntent)
                 finish()
@@ -96,11 +94,8 @@ class LoginActivity : AppCompatActivity() {
 
         }else
          Toast.makeText(this, "خطأ في كلمة المرور او كلمة السر", Toast.LENGTH_SHORT).show()
-
         }
         )
-
-
         viewModel.errorMessage.observe(this, Observer {
             Toast.makeText(this, "خطأ في كلمة المرور او كلمة السر", Toast.LENGTH_SHORT).show()
         })
