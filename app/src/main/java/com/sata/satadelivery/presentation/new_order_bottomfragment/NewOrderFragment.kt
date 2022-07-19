@@ -123,7 +123,7 @@ class NewOrderFragment @Inject constructor(
     }
 
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    override  fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
 
         if (savedInstanceState == null) {
@@ -140,7 +140,7 @@ class NewOrderFragment @Inject constructor(
         return dialog
     }
 
-    fun cancelRequest() {0 
+    fun cancelRequest() {0
         val cancelInfo = OrdersItem(
             delivery_id = pref.deliveryId, order_id = item.order_details?.get(0)?.orderId!!)
         viewModel.deliversOrdersCanceled(cancelInfo)
