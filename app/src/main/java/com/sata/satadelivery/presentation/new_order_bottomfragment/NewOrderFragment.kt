@@ -140,7 +140,7 @@ class NewOrderFragment @Inject constructor(
         return dialog
     }
 
-    fun cancelRequest() {
+    fun cancelRequest() {0 
         val cancelInfo = OrdersItem(
             delivery_id = pref.deliveryId, order_id = item.order_details?.get(0)?.orderId!!)
         viewModel.deliversOrdersCanceled(cancelInfo)
