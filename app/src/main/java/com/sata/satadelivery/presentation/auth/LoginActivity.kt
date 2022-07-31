@@ -73,15 +73,15 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 try{
                 pref.UserToken = it.token
-                pref.deliveryId = it.user.driver!!.id!!
-                pref.delivery_status = it.user.driver!!.is_online
-                pref.restaurantName = it.user.name
-                pref.userName = it.user.driver!!.name
-                pref.userPhone = it.user.driver!!.mobile
-                pref.photo = it.user.driver!!.photo
-                pref.room_id = it.user.room_id
-                pref.restaurantLat = it.user.driver!!.branches.latitude.toString()
-                pref.restaurantLong = it.user.driver!!.branches.longitude.toString()
+                pref.deliveryId = it.user?.id!!
+                pref.delivery_status = it.user?.driver!!.is_online
+                pref.restaurantName = it.user?.name
+                pref.userName = it.user?.driver!!.name
+                pref.userPhone = it.user?.driver!!.mobile
+                pref.photo = it.user?.driver!!.photo
+                pref.room_id = it.user?.room_id
+                pref.restaurantLat = it.user?.driver!!.branches.latitude.toString()
+                pref.restaurantLong = it.user?.driver!!.branches.longitude.toString()
                 }catch (e:Exception){
 
                 }

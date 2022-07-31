@@ -53,10 +53,13 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.sata.satadelivery.models.auth.AuthModel
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -66,6 +69,7 @@ import kotlinx.android.synthetic.main.map_activity.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.jetbrains.anko.custom.async
 import org.jetbrains.anko.custom.onUiThread
 import java.io.IOException
@@ -142,10 +146,26 @@ class MapActivity : AppCompatActivity(), HasAndroidInjector, OnMapReadyCallback,
         mapFragment?.getMapAsync(this)
 
         mDrawerLayout = binding.drawerLayout
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.d("TAG", "token:///:false ${task.exception?.message}")
+                return@OnCompleteListener
+            }
 
+            val token = task.result
+            registerTokenRequest(token)
+         //   viewModel.updateUserToken(Pref.userId,Token(token))
+
+            Log.d("TAG", "token:///:"  + Pref.VendorId +"///"+ token)
+            if (!Pref.UserToken.isNullOrEmpty()) {
+                lifecycleScope.launch {
+
+                }
+            }
+            // Log and toast
+        })
         statusCheck()
         val headerBinding: NavHeaderMainBinding =
-
             NavHeaderMainBinding.bind(binding.navView.getHeaderView(0))
 
 
@@ -585,10 +605,10 @@ class MapActivity : AppCompatActivity(), HasAndroidInjector, OnMapReadyCallback,
 //            mFusedLocationClient!!.removeLocationUpdates(locationCallback)
 //
 //        } else {
-            mFusedLocationClient?.requestLocationUpdates(locationRequest,
-                locationCallback,
-                Looper.getMainLooper())
-    //    }
+        mFusedLocationClient?.requestLocationUpdates(locationRequest,
+            locationCallback,
+            Looper.getMainLooper())
+        //    }
 
     }
 
@@ -881,4 +901,11 @@ class MapActivity : AppCompatActivity(), HasAndroidInjector, OnMapReadyCallback,
 
     }
 
+    fun registerTokenRequest(firebaseToken: String) {
+        val registerTokenInfo = AuthModel(
+            token = firebaseToken, user_id = Pref.deliveryId)
+
+        viewModel.registerToken(registerTokenInfo)
+
+    }
 }

@@ -80,28 +80,56 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/siteDrawerMenuButton"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_margin="@dimen/_8sdp"
                 android:background="@drawable/white_circle_bk"
-                android:padding="@dimen/dimen_8"
-                android:src="@drawable/menu"
+                android:padding="@dimen/_4sdp"
+                android:src="@drawable/ic_dots"
+                android:tint="@color/orange"
                 android:translationZ="3dp"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/note"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_marginLeft="64dp"
-                android:layout_marginTop="32dp"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_margin="@dimen/_8sdp"
                 android:background="@drawable/white_circle_bk"
                 android:padding="@dimen/dimen_8"
                 android:src="@drawable/note"
+                android:tint="@color/orange"
+                android:translationZ="3dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/siteDrawerMenuButton" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8"
+                android:translationZ="3dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="@dimen/dimen_4"
+                android:textColor="@color/black"
+
+
+                app:layout_constraintLeft_toLeftOf="@id/statusIcon"
+                app:layout_constraintRight_toRightOf="@+id/statusIcon"
+                app:layout_constraintTop_toBottomOf="@id/statusIcon" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/statusIcon"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/online_ic"
                 android:translationZ="3dp"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -116,43 +144,6 @@
                 android:translationZ="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-               android:id="@+id/statusLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shadow_back_g"
-                android:translationZ="3dp"
-                app:layout_constraintLeft_toRightOf="@+id/note"
-                app:layout_constraintRight_toLeftOf="@+id/siteDrawerMenuButton"
-                app:layout_constraintTop_toTopOf="@+id/note">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/dimen_4"
-                    android:layout_marginLeft="@dimen/dimen_8"
-                    android:layout_marginRight="8dp"
-                    android:textColor="@color/black"
-                    app:layout_constraintRight_toLeftOf="@+id/statusIcon"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/statusIcon"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                     android:src="@drawable/online_ic"
-                    android:layout_marginRight="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
 
             <fragment
                 android:id="@+id/map"

@@ -19,6 +19,18 @@ interface APIServices {
     @POST("Driverlogin")
     suspend fun login(@Body loginModel: User?): Response<AuthModel>
 
+    ////////////// notifications
+    @POST("users/registerToken")
+    suspend fun registerToken(@Body user: AuthModel?): Response<AuthModel>
+
+
+    @POST("notification/sendToDevice")
+    suspend fun sendNotificationToDevice(@Body user: AuthModel?): Response<AuthModel>
+
+
+
+
+
     //delivers/GetDliveryOrders
 
 

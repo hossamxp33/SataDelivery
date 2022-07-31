@@ -23,6 +23,9 @@ interface DataSource {
 
     suspend fun getCurrentOrders(): ArrayList<OrdersItem>
 
+    suspend fun registerToken(loginModel: AuthModel): Response<AuthModel>
+    suspend fun sendNotificationToDevice(loginModel: AuthModel): Response<AuthModel>
+
     suspend fun getDeliveryOrdersByDate(dateModel: DateModel?): ArrayList<OrdersItem>
     suspend fun changeOrderStatus(order_id:Int,data: OrderStatus) : OrderStatus
 

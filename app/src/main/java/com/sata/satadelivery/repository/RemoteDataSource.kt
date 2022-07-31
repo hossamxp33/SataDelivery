@@ -31,6 +31,17 @@ class RemoteDataSource @Inject constructor(private val ApiService: APIServices)
        runCatching { ApiService.getCurrentOrders() }
            .getOrElse { throw it }
 
+
+
+    override suspend fun registerToken(loginModel: AuthModel): Response<AuthModel> {
+        return ApiService.registerToken(loginModel)
+    }
+
+    override suspend fun sendNotificationToDevice(loginModel: AuthModel): Response<AuthModel> {
+        return ApiService.sendNotificationToDevice(loginModel)
+    }
+
+
     override suspend fun getDeliveryOrdersByDate(dateModel: DateModel?): ArrayList<OrdersItem> =
        runCatching { ApiService.getDeliveryOrdersByDate(dateModel) }
            .getOrElse { throw it }

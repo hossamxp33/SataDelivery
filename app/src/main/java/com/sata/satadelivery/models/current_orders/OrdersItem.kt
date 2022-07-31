@@ -23,4 +23,6 @@ data class OrdersItem(
     var paymenttype_id: Int? = null,
     var taxes: Double? = null,
     var total: Double? = null,
+    var offer_discount: Double?=null,
+    var wallet_discount: Double?=null
 )

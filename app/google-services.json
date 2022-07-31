@@ -1,42 +1,129 @@
 {
   "project_info": {
-    "project_number": "661719332311",
-    "project_id": "sata-fast",
-    "storage_bucket": "sata-fast.appspot.com"
+    "project_number": "25410268673",
+    "project_id": "satafast-ios",
+    "storage_bucket": "satafast-ios.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:661719332311:android:f2d4e4e9a530d5d1c2c792",
+        "mobilesdk_app_id": "1:25410268673:android:4f3acbdc5b99e3d7261a00",
         "android_client_info": {
-          "package_name": "com.sata.satadelivery"
+          "package_name": "com.codesroots.satavendor"
         }
       },
       "oauth_client": [
         {
-          "client_id": "661719332311-vgn4kbao2aejfdi59dmst5nfbq1gcnt3.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.sata.satadelivery",
-            "certificate_hash": "b55b730052512905a04c5fb3eebf8e65f36fe4e2"
-          }
-        },
-        {
-          "client_id": "661719332311-pi25sldhuhspsgokoamt3coi3ch71gpa.apps.googleusercontent.com",
+          "client_id": "25410268673-p75ed0ch28l5ptb2u6g058idrp0d311o.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCxzKfHk8b0d7yqeJu7rIjGho1Jeg2zivY"
+          "current_key": "AIzaSyAoBubVSdjK703Ya_zv2NZOJU24a1zB4cg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "661719332311-pi25sldhuhspsgokoamt3coi3ch71gpa.apps.googleusercontent.com",
+              "client_id": "25410268673-p75ed0ch28l5ptb2u6g058idrp0d311o.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "25410268673-2qmadptcmb05kq2piqr0396dn3rcg3cp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codesroots.sataVendorApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25410268673:android:35a191765aff12d8261a00",
+        "android_client_info": {
+          "package_name": "com.sata.satadelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25410268673-cdttrhkq6nudv1vdjm6c3a4vg0l71al1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sata.satadelivery",
+            "certificate_hash": "2edadb76c39aeb35b901f23a08203e79c21e093d"
+          }
+        },
+        {
+          "client_id": "25410268673-p75ed0ch28l5ptb2u6g058idrp0d311o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoBubVSdjK703Ya_zv2NZOJU24a1zB4cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25410268673-p75ed0ch28l5ptb2u6g058idrp0d311o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "25410268673-2qmadptcmb05kq2piqr0396dn3rcg3cp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codesroots.sataVendorApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25410268673:android:c81e54cb54c11754261a00",
+        "android_client_info": {
+          "package_name": "com.sata.satafood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25410268673-ohq10cep4tef8kh9ujm1lg5gjpf1f3rh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sata.satafood",
+            "certificate_hash": "2edadb76c39aeb35b901f23a08203e79c21e093d"
+          }
+        },
+        {
+          "client_id": "25410268673-p75ed0ch28l5ptb2u6g058idrp0d311o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoBubVSdjK703Ya_zv2NZOJU24a1zB4cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25410268673-p75ed0ch28l5ptb2u6g058idrp0d311o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "25410268673-2qmadptcmb05kq2piqr0396dn3rcg3cp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codesroots.sataVendorApp"
+              }
             }
           ]
         }
